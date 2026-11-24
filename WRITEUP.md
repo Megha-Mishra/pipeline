@@ -8,6 +8,8 @@ I used a table, not a board. A stage column can hold about 10,000 deals. Cards c
 
 Four views sit in the header. **Today** is the deals that need this person now: close date today or recently passed, a follow-up that is due, a close this week, a teammate change today, or three weeks of silence late in the funnel. Each row says why. **My deals** is everything they own. **All deals** is the full pipeline. **Quarter-end cleanup** is open deals whose close date passed more than 90 days ago, which is the "move thousands to Lost" job.
 
+Today and Quarter-end cleanup do not show Won or Lost on the stage path or in the stage filter. Those two views are unfinished work. A deal marked Won or Lost is done, so it leaves the list and those counts would stay at 0, which looks like the move failed. You can still move a row to Won or Lost from the table or the keyboard. The deal then drops out of Today or Quarter-end cleanup, and it is counted under Won or Lost on All deals and My deals, which keep every stage.
+
 "Viewing as" stands in for login. It decides whose Today and My deals you see, and who the simulated teammates can be.
 
 ## Decisions, and what I rejected

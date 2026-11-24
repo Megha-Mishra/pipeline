@@ -424,7 +424,12 @@ export function App({ engine }: { engine: PipelineEngine }) {
           You're offline. Moves won't save until you reconnect, and teammates' changes will arrive when you do.
         </div>
       )}
-      <StagePath counts={stats.stageCounts} active={effective.stage} onSelect={view.setStage} />
+      <StagePath
+        counts={stats.stageCounts}
+        active={effective.stage}
+        onSelect={view.setStage}
+        stages={effective.tab === 'today' || effective.tab === 'cleanup' ? STAGES.filter((stage) => stage !== 'Won' && stage !== 'Lost') : STAGES}
+      />
       <FilterBar
         tab={effective.tab}
         me={engine.me}

@@ -76,7 +76,7 @@ export function FilterBar(p: FilterBarProps) {
 
       <FilterSelect label="Stage" value={p.stage ?? ''} onChange={(v) => p.onStage((v || null) as Stage | null)}>
         <option value="">All stages</option>
-        {STAGES.map((stage) => (
+        {(p.tab === 'today' || p.tab === 'cleanup' ? STAGES.filter((stage) => stage !== 'Won' && stage !== 'Lost') : STAGES).map((stage) => (
           <option key={stage} value={stage}>
             {stage}
           </option>

@@ -82,7 +82,15 @@ export function usePipelineView(engine: PipelineEngine, version: number) {
   const refresh = useCallback(() => setRefreshKey((k) => k + 1), []);
   // Today and My deals only hold the viewer's deals, so an owner filter is dropped there.
   const setTab = useCallback(
-    (tab: TabId) => setQuery((q) => ({ ...q, tab, ...defaultSort(tab), owner: tab === 'today' || tab === 'mine' ? null : q.owner })),
+    (tab: TabId) =>
+      setQuery((q) => ({
+        ...q,
+        tab,
+        ...defaultSort(tab),
+        owner: tab === 'today' || tab === 'mine' ? null : q.owner,
+        // Won and Lost are not on the Today or Quarter-end path, so a leftover filter for them would show an empty list.
+        stage: (tab === 'today' || tab === 'cleanup') && (q.stage === 'Won' || q.stage === 'Lost') ? null : q.stage,
+      })),
     [],
   );
   const setOwner = useCallback((owner: string | null) => setQuery((q) => ({ ...q, owner })), []);
